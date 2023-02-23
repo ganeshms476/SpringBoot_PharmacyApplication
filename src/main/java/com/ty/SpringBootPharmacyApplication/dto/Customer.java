@@ -1,4 +1,4 @@
-package com.ty.springboot_pharmacy.dto;
+package com.ty.SpringBootPharmacyApplication.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +9,13 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Address {
+public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String street;
-	private String landmark;
-	private String area;
-	private String state;
-	private int pincode;
-	
-	
+	private String name;
+	private String email;
+	private String password;
+	private long phone;
+	private String address;
 }

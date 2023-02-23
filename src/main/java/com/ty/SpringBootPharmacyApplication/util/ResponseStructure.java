@@ -1,4 +1,4 @@
-package com.ty.springboot_pharmacy.util;
+package com.ty.SpringBootPharmacyApplication.util;
 
 import lombok.Data;
 
