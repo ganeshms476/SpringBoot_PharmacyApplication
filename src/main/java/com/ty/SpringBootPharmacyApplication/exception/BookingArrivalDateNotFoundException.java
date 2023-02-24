@@ -1,6 +1,6 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
-public class BookingArrivalDateNotFoundException {
+public class BookingArrivalDateNotFoundException extends RuntimeException {
 	String message = "Booking Arrival date Not Found";
 
 	public String getMessage() {
