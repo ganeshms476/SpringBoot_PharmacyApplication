@@ -1,4 +1,4 @@
-package com.ty.springboot_pharmacy.dto;
+package com.ty.SpringBootPharmacyApplication.dto;
 
 import java.util.Date;
 import java.util.List;

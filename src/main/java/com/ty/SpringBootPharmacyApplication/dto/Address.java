@@ -1,6 +1,4 @@
-package com.ty.springboot_pharmacy.dto;
-
-import java.util.Date;
+package com.ty.SpringBootPharmacyApplication.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,16 +9,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Medicine {
+public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	private int cost;
-	private Date date;
-	private int stockQty;
-	private String manfacturer;
-	private String description;
+	private String street;
+	private String landmark;
+	private String area;
+	private String state;
+	private int pincode;
 	
 	
 }

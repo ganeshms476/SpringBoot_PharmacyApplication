@@ -1,15 +1,17 @@
-package com.ty.springboot_pharmacy.dto;
+package com.ty.SpringBootPharmacyApplication.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
-@Entity
 @Data
-public class Customer {
+@Entity
+public class Staff {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -18,4 +20,9 @@ public class Customer {
 	private String password;
 	private long phone;
 	private String address;
+	
+	@ManyToOne
+	private Admin admin;
+	@OneToOne
+	private MedicalStore store;
 }
