@@ -12,7 +12,5 @@ public class AdminDAO {
 	@Autowired
 	AdminRepository repo;
 	
-	public Admin saveAdmin(Admin admin) {
-		
-	}
+ 
 }

@@ -1,8 +1,13 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
 public class MedicineIdNotFoundException extends RuntimeException {
+ 
+	String message = "medicine id is not found ";
+ 
+		// TODO Auto-generated method stub
+ 
 
-	String message = "Medicine Id Not Found";
+	 
 
 	public MedicineIdNotFoundException(String message) {
 		super();
@@ -10,11 +15,14 @@ public class MedicineIdNotFoundException extends RuntimeException {
 	}
 
 	public String getMessage() {
+ 
 		return message;
 	}
 
 	public MedicineIdNotFoundException() {
 
 	}
-
+ 
+ 
+ 
 }
