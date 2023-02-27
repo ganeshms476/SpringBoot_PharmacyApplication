@@ -1,5 +1,6 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
+ 
 public class StaffEmailNotFoundException extends RuntimeException{
 	String message = "staff email  is not found ";
 
@@ -16,4 +17,5 @@ public class StaffEmailNotFoundException extends RuntimeException{
 	public StaffEmailNotFoundException(String message) {
 		this.message = message;
 	}
+ 
 }

@@ -1,6 +1,6 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
-public class AdminNotFoundClassException extends RuntimeException {
+public class AdminIdNotFoundException extends RuntimeException {
 	String message = "Admin not found for this id";
 
 	@Override
@@ -9,11 +9,11 @@ public class AdminNotFoundClassException extends RuntimeException {
 		return message;
 	}
 
-	public AdminNotFoundClassException() {
+	public AdminIdNotFoundException() {
 
 	}
 
-	public AdminNotFoundClassException(String message) {
+	public AdminIdNotFoundException(String message) {
 		this.message = message;
 	}
 }

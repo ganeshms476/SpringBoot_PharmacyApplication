@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import com.ty.SpringBootPharmacyApplication.dao.AddressDao;
 import com.ty.SpringBootPharmacyApplication.dao.MedicalStoreDao;
 import com.ty.SpringBootPharmacyApplication.dto.MedicalStore;
-import com.ty.SpringBootPharmacyApplication.exception.MedicalStoreNotFoundException;
+import com.ty.SpringBootPharmacyApplication.exception.MedicalStoreIdNotFoundException;
+ 
 import com.ty.SpringBootPharmacyApplication.util.ResponseStructure;
  
 
@@ -38,7 +39,7 @@ public class MedicalStoreService {
 			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure,HttpStatus.FOUND);
 		}
 		else {
-			throw  new   MedicalStoreNotFoundException() ;
+			throw  new   MedicalStoreIdNotFoundException() ;
 		}
 	}
 	
@@ -52,7 +53,7 @@ public class MedicalStoreService {
 			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure,HttpStatus.FOUND);
 		}
 		else {
-			throw  new  MedicalStoreNotFoundException() ;
+			throw  new  MedicalStoreIdNotFoundException() ;
 		}
 	}
 	
@@ -66,7 +67,7 @@ public class MedicalStoreService {
 			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure,HttpStatus.FOUND);
 		}
 		else {
-			throw  new  MedicalStoreNotFoundException() ;
+			throw  new  MedicalStoreIdNotFoundException() ;
 		}
 	}
 }
