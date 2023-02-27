@@ -1,6 +1,6 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
-public class AddressClassException extends RuntimeException {
+public class AddressIdNotFoundException extends RuntimeException {
 	String message = "Adress Id not found Exception";
 
 	@Override
@@ -9,12 +9,12 @@ public class AddressClassException extends RuntimeException {
 		return message;
 	}
 
-	public AddressClassException(String message) {
+	public AddressIdNotFoundException(String message) {
 		super();
 		this.message = message;
 	}
 
-	public AddressClassException() {
+	public AddressIdNotFoundException() {
 		super();
 	}
 
