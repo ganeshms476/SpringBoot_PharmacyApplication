@@ -1,20 +1,18 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
-public class MedicalStoreNotFoundException extends RuntimeException {
+public class MedicalStoreDataNotFoundExcpetion extends RuntimeException {
 	String message = "MedicalStore not found for this id";
 
-	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return message;
 	}
 
-	public MedicalStoreNotFoundException(String message) {
+	public MedicalStoreDataNotFoundExcpetion(String message) {
 		super();
 		this.message = message;
 	}
 
-	public MedicalStoreNotFoundException() {
+	public MedicalStoreDataNotFoundExcpetion() {
 		super();
 	}
 }
