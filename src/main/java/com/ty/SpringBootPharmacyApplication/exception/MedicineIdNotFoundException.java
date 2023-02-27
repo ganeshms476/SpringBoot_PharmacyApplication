@@ -2,7 +2,7 @@ package com.ty.SpringBootPharmacyApplication.exception;
 
 public class MedicineIdNotFoundException extends RuntimeException {
 
-	String message;
+	String message = "Medicine Id Not Found";
 
 	public MedicineIdNotFoundException(String message) {
 		super();

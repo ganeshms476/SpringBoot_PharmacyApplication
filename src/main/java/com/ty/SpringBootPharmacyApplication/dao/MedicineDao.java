@@ -13,7 +13,7 @@ import com.ty.SpringBootPharmacyApplication.repository.MedicineRepository;
 public class MedicineDao {
 	@Autowired
 	private MedicineRepository repo;
-
+	@Autowired
 	private MedicalStoreDao storeDao;
 
 	public Medicine saveMedicine(Medicine medicine) {
