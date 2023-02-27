@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ty.SpringBootPharmacyApplication.dto.MedicalStore;
@@ -18,21 +20,21 @@ public class MedicalStoreController {
 	private MedicalStoreService service;
 	
 	@PostMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(MedicalStore medicalStore,int address_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(@RequestBody MedicalStore medicalStore,@RequestParam int address_id){
 		return service.saveMedicalStore(medicalStore, address_id);
 	}
 	
 	@PutMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore (MedicalStore medicalStore,int medicalStore_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore (@RequestBody MedicalStore medicalStore,@RequestParam int medicalStore_id){
 		return service.updateMedicalStore(medicalStore,medicalStore_id);
 	}
 	
 	@DeleteMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore (int medicalStore_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore (@RequestParam int medicalStore_id){
 		return service.deleteById(medicalStore_id);
 	}
 	@GetMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> getByMedicalStoreId (int medicalStore_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> getByMedicalStoreId ( @RequestParam int medicalStore_id){
 		return service.getByIdMedicalStore(medicalStore_id);
 	}
 }
