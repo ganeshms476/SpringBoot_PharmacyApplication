@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.ty.SpringBootPharmacyApplication.dao.MedicalStoreDao;
 import com.ty.SpringBootPharmacyApplication.dao.MedicineDao;
 import com.ty.SpringBootPharmacyApplication.dto.MedicalStore;
 import com.ty.SpringBootPharmacyApplication.dto.Medicine;
@@ -24,7 +25,7 @@ public class MedicineService {
 
 	public ResponseEntity<ResponseStructure<Medicine>> saveMedicine(Medicine medicine, int medicalStrore_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
-		MedicalStore medicalStore = medicalStoreDao.getMedicalStoreById(medicalStrore_id);
+		MedicalStore medicalStore = medicalStoreDao.getById(medicalStrore_id);
 		if (medicalStore != null) {
 			Medicine medicine2 = medicineDao.saveMedicine(medicine);
 			structure.setMessage("Successfully saved medicine");
@@ -39,7 +40,7 @@ public class MedicineService {
 			int medicalStore_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
 		Medicine medicine2 = medicineDao.getMedicineById(medicine_id);
-		MedicalStore store = medicalStoreDao.getMedicalStoreById(medicalStore_id);
+		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
 		if (medicine2 != null) {
 			if (store != null) {
 				medicine.setId(medicine_id);
@@ -77,17 +78,17 @@ public class MedicineService {
 			throw new MedicineIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicinesByMedicalStoreId(int medicalStore_id) {
-		ResponseStructure<List<Medicine>> structure = new ResponseStructure<>();
-		MedicalStore store = medicalStoreDao.getMedicalStoreById(medicalStore_id);
-		if (store != null) {
-			structure.setMessage("Successfully fetched all the medicines");
-			structure.setStatus(HttpStatus.OK.value());
-			structure.setData(medicineDao.getAllMedicine(medicalStore_id));
-			return new ResponseEntity<ResponseStructure<List<Medicine>>>(structure, HttpStatus.OK);
-		} else
-			throw new MedicalStoreIdNotFoundException();
-
-	}
+//	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicinesByMedicalStoreId(int medicalStore_id) {
+//		ResponseStructure<List<Medicine>> structure = new ResponseStructure<>();
+//		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
+//		if (store != null) {
+//			structure.setMessage("Successfully fetched all the medicines");
+//			structure.setStatus(HttpStatus.OK.value());
+//			structure.setData(medicineDao.getAllMedicine(medicalStore_id));
+//			return new ResponseEntity<ResponseStructure<List<Medicine>>>(structure, HttpStatus.OK);
+//		} else
+//			throw new MedicalStoreIdNotFoundException();
+//
+//	}
 
 }

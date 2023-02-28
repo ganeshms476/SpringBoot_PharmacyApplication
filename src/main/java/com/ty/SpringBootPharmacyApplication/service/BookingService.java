@@ -15,15 +15,15 @@ public class BookingService {
 	@Autowired
 	private BookingDAO bookingDAO;
 	
-	@Autowired
-	private CustomerDao customerdao;
+//	@Autowired
+//	private CustomerDao customerdao;
 	
-	public ResponseEntity<ResponseStructure<Booking>> saveBooking(int cid,Booking booking){
-		Customer customer = 
-		if(bookingDAO.saveBooking(booking)!=null) {
-			if
-		}else {
-			return null;
-		}
-	}
+//	public ResponseEntity<ResponseStructure<Booking>> saveBooking(int cid,Booking booking){
+//		Customer customer = 
+//		if(bookingDAO.saveBooking(booking)!=null) {
+//			if
+//		}else {
+//			return null;
+//		}
+//	}
 }

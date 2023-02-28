@@ -43,10 +43,10 @@ public class MedicineController {
 		return service.getMedicineById(medicine_id);
 	}
 
-	@GetMapping("/AllMedicines")
-	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicineByMedicalStoreId(
-			@RequestParam int medicalStore_id) {
-		return service.getAllMedicinesByMedicalStoreId(medicalStore_id);
-	}
+//	@GetMapping("/AllMedicines")
+//	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicineByMedicalStoreId(
+//			@RequestParam int medicalStore_id) {
+//		return service.getAllMedicinesByMedicalStoreId(medicalStore_id);
+//	}
 
 }
