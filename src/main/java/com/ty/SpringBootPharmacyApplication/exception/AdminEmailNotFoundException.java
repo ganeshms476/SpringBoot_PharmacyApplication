@@ -1,7 +1,7 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
 public class AdminEmailNotFoundException extends RuntimeException {
-	String message = "Adress Id not found Exception";
+	String message = "Email Id not found";
 
 	public String getMessage() {
 		return message;

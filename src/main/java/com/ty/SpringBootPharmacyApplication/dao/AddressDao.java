@@ -12,7 +12,7 @@ import com.ty.SpringBootPharmacyApplication.repository.AdminRepository;
 public class AddressDao {
 	
 	@Autowired
-	AddressRepository repo;
+	private AddressRepository repo;
 	
 	 public Address saveAddress(Address address) {
 		 return repo.save(address);

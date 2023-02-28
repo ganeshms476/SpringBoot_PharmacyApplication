@@ -18,7 +18,10 @@ public class AdminDAO {
 	}
 
 	public Admin loginAdmin(String email) {
-		return repo.loginUsingEmail(email);
+		if (repo.loginUsingEmail(email) != null)
+			return repo.loginUsingEmail(email);
+		else
+			return null;
 	}
 
 	public Admin updateAdmin(int id, Admin admin) {
