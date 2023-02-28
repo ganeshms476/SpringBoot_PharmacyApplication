@@ -10,7 +10,7 @@ import com.ty.SpringBootPharmacyApplication.dto.Medicine;
 
 public interface MedicineRepository extends JpaRepository<Medicine, Integer> {
 
-	@Query("SELECT m FROM Medicine m WHERE m.MEDICALSTORE=?1 ")
-	public List<Medicine> getAllMedicineByMedicalStore(MedicalStore medicalStore);
+//	@Query("SELECT m FROM Medicine m WHERE m.medicalstore.id=?1 ")
+//	public List<Medicine> getAllMedicineByMedicalStore(int id);
 
 }

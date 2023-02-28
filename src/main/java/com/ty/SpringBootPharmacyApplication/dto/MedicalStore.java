@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -22,8 +23,8 @@ public class MedicalStore {
 	private String license;
 	private long landlineNo;
 
-//	@ManyToOne
-//	private Admin admin;
+	@ManyToOne
+	private Admin admin;
 
 	@OneToOne
 	private Address address;
