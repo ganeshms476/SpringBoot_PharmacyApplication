@@ -1,5 +1,7 @@
 package com.ty.SpringBootPharmacyApplication.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,5 +40,9 @@ public class BookingDAO {
 			return repository.findById(id).get();
 		} else
 			return null;
+	}
+
+	public List<Booking> getAllBooking() {
+		return repository.findAll();
 	}
 }
