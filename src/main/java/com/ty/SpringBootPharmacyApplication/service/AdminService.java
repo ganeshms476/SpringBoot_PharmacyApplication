@@ -64,10 +64,11 @@ public class AdminService {
 	}
 
 	public ResponseEntity<ResponseStructure<Admin>> loginAdmin(String email, String password) {
-		ResponseStructure<Admin> structure = new ResponseStructure<>();
 		Admin admin = dao.loginAdmin(email);
 		if (dao.loginAdmin(email) != null) {
 			if (admin.getPassword().equals(password)) {
+				ResponseStructure<Admin> structure = new ResponseStructure<>();
+
 				structure.setMessage("Logged in");
 				structure.setStatus(HttpStatus.OK.value());
 				structure.setData(dao.loginAdmin(email));

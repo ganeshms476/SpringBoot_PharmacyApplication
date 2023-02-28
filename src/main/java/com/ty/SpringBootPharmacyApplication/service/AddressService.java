@@ -18,7 +18,7 @@ public class AddressService {
 		ResponseStructure<Address> structure=new ResponseStructure<Address>();
 		structure.setMessage("Successfully address is saved");
 		structure.setStatus(HttpStatus.CREATED.value());
-		structure.setData(address);
+		structure.setData(addressDao.saveAddress(address));
 		return new ResponseEntity<ResponseStructure<Address>>(structure,HttpStatus.CREATED);
 	}
 	 public ResponseEntity<ResponseStructure<Address>> updateAddress(Address address,int id){
@@ -27,7 +27,7 @@ public class AddressService {
 			 ResponseStructure<Address> structure=new ResponseStructure<Address>();
 				structure.setMessage("Successfully address is updated");
 				structure.setStatus(HttpStatus.OK.value());
-				structure.setData(address); 
+				structure.setData(addressDao.updateAddress(rcvAddress, id)); 
 				return new ResponseEntity<ResponseStructure<Address>>(structure,HttpStatus.OK);
 		 }
 		 else {
