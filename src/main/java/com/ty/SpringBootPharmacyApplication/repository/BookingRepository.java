@@ -7,4 +7,4 @@ import com.ty.SpringBootPharmacyApplication.dto.Booking;
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-}
+}	
