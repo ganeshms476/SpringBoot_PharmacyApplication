@@ -72,7 +72,7 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 			String fieldname = ((FieldError) error).getField();
 			String message = ((FieldError) error).getDefaultMessage();
 			map.put(fieldname, message);
-		} 
+		}
 		return new ResponseEntity<Object>(map, HttpStatus.BAD_REQUEST);
 	}
 
@@ -80,6 +80,15 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 	public ResponseEntity<ResponseStructure<String>> getException(BookingArrivalDateNotFoundException ex) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
 		structure.setMessage("MedicalStore Id not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(AdminPasswordInvalidException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(AdminPasswordInvalidException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Admin Password is not valid");
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
