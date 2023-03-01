@@ -31,5 +31,6 @@ public class MedicalStore {
 
 	@OneToMany
 	private List<Medicine> list;
+	
 
 }

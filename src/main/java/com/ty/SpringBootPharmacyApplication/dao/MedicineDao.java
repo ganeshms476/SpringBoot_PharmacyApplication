@@ -46,12 +46,14 @@ public class MedicineDao {
 		return null;
 	}
 
-//	public List<Medicine> getAllMedicine(int medicalstore_id) {
-//		MedicalStore store = storeDao.getById(medicalstore_id);
-//		if (store != null) {
-//			List<Medicine> list = repo.getAllMedicineByMedicalStore(store);
-//			return list;
-//		}
-//		return null;
-//	}
+	public List<Medicine> getAllMedicine(int medicalstore_id) {
+		MedicalStore store = storeDao.getById(medicalstore_id);
+		if (store != null) {
+			List<Medicine> list = repo.getAllMedicineByMedicalStore(store);
+			return list;
+		}
+		return null;
+	}
+	
+	
 }

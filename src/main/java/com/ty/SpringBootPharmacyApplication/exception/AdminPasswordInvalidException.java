@@ -1,7 +1,7 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
 public class AdminPasswordInvalidException extends RuntimeException {
-	String message = "Password Invalid";
+	String message = "Password invalid";
 
 	@Override
 	public String getMessage() {
@@ -11,11 +11,10 @@ public class AdminPasswordInvalidException extends RuntimeException {
 
 	public AdminPasswordInvalidException(String message) {
 		super();
-		this.message = message;
+		this.message= message;
 	}
 
 	public AdminPasswordInvalidException() {
 		super();
 	}
-
 }

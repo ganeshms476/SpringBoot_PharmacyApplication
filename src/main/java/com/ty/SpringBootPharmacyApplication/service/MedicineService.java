@@ -78,17 +78,17 @@ public class MedicineService {
 			throw new MedicineIdNotFoundException();
 	}
 
-//	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicinesByMedicalStoreId(int medicalStore_id) {
-//		ResponseStructure<List<Medicine>> structure = new ResponseStructure<>();
-//		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
-//		if (store != null) {
-//			structure.setMessage("Successfully fetched all the medicines");
-//			structure.setStatus(HttpStatus.OK.value());
-//			structure.setData(medicineDao.getAllMedicine(medicalStore_id));
-//			return new ResponseEntity<ResponseStructure<List<Medicine>>>(structure, HttpStatus.OK);
-//		} else
-//			throw new MedicalStoreIdNotFoundException();
-//
-//	}
+	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicinesByMedicalStoreId(int medicalStore_id) {
+		ResponseStructure<List<Medicine>> structure = new ResponseStructure<>();
+		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
+		if (store != null) {
+			structure.setMessage("Successfully fetched all the medicines");
+			structure.setStatus(HttpStatus.OK.value());
+			structure.setData(medicineDao.getAllMedicine(medicalStore_id));
+			return new ResponseEntity<ResponseStructure<List<Medicine>>>(structure, HttpStatus.OK);
+		} else
+			throw new MedicalStoreIdNotFoundException();
+
+	}
 
 }
