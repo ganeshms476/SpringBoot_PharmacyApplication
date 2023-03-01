@@ -86,13 +86,5 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
-	
-	@ExceptionHandler(AdminPasswordInvalidException.class)
-	public ResponseEntity<ResponseStructure<String>> getException(AdminPasswordInvalidException ex) {
-		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setMessage("password not found");
-		structure.setStatus(HttpStatus.NOT_FOUND.value());
-		structure.setData(ex.getMessage());
-		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
-	}
+
 }
