@@ -22,7 +22,7 @@ public class Admin {
 	private long phone;
 	private String address;
 	
-	@OneToMany
-	private List<MedicalStore> stores;
+//	@OneToMany
+//	private List<MedicalStore> stores;
 
 }

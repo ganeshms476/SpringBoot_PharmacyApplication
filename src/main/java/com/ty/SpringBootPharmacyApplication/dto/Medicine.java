@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,7 +23,8 @@ public class Medicine {
 	private String manfacturer;
 	private String description;
 	
-	
+	@ManyToOne
+	private MedicalStore store;
 	
 	
 }
