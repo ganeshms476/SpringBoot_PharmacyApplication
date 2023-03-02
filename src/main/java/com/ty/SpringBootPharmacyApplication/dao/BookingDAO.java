@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ty.SpringBootPharmacyApplication.dto.Booking;
+import com.ty.SpringBootPharmacyApplication.dto.Customer;
 import com.ty.SpringBootPharmacyApplication.repository.BookingRepository;
 
 @Repository
@@ -42,7 +43,10 @@ public class BookingDAO {
 			return null;
 	}
 
-	public List<Booking> getAllBooking() {
-		return repository.findAll();
+	
+
+	public List<Booking> getAllBookingByCustomerId(Customer customer) {
+		
+		return repository.getAllBookingByCustomerId(customer);
 	}
 }
