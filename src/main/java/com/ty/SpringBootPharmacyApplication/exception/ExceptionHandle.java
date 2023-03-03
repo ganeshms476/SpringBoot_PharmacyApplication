@@ -86,5 +86,6 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
+	
 
 }
