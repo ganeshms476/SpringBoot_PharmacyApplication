@@ -20,7 +20,8 @@ public class StaffController {
 	private StaffService service;
 
 	@PostMapping("/staff")
-	public ResponseEntity<ResponseStructure<Staff>> signUpStaff(@RequestBody Staff staff, @RequestParam String store_id, @RequestParam String admin_id) {
+	public ResponseEntity<ResponseStructure<Staff>> signUpStaff(@RequestBody Staff staff, @RequestParam String store_id,
+			@RequestParam String admin_id) {
 		return service.signUpStaff(staff, store_id, admin_id);
 	}
 
@@ -32,8 +33,8 @@ public class StaffController {
 
 	@PutMapping("/staff")
 	public ResponseEntity<ResponseStructure<Staff>> updateStaff(@RequestBody Staff staff, @RequestParam String staff_id,
-			@RequestParam String medicalStore_id) {
-		return service.updateStaff(staff, staff_id, medicalStore_id);
+			@RequestParam String admin_id, @RequestParam String medicalStore_id) {
+		return service.updateStaff(staff, staff_id, admin_id, medicalStore_id);
 	}
 
 	@DeleteMapping("/staff")

@@ -68,23 +68,30 @@ public class StaffService {
 			throw new StaffEmailNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Staff>> updateStaff(Staff staff, String staff_id, String medicalStore_id) {
+	public ResponseEntity<ResponseStructure<Staff>> updateStaff(Staff staff, String staff_id, String admin_id,
+			String medicalStore_id) {
 		ResponseStructure<Staff> structure = new ResponseStructure<>();
 		MedicalStore medicalStore = medicalStoreDao.getById(medicalStore_id);
+		Admin admin = adminDao.getAdminById(admin_id);
 		Staff staff1 = staffDao.getStaffById(staff_id);
-		if (medicalStore != null) {
-			if (staff1 != null) {
-				staff.setId(staff_id);
-				staff.setStore(medicalStore);
-				structure.setMessage("Successfully updated Staff");
-				structure.setStatus(HttpStatus.OK.value());
-				structure.setData(staffDao.updateStaff(staff, staff_id));
-				return new ResponseEntity<ResponseStructure<Staff>>(structure, HttpStatus.OK);
+		if (admin != null) {
+			if (medicalStore != null) {
+				if (staff1 != null) {
+					staff.setId(staff_id);
+					staff.setStore(medicalStore);
+					staff.setAdmin(admin);
+					structure.setMessage("Successfully updated Staff");
+					structure.setStatus(HttpStatus.OK.value());
+					structure.setData(staffDao.updateStaff(staff, staff_id));
+					return new ResponseEntity<ResponseStructure<Staff>>(structure, HttpStatus.OK);
 
+				} else
+					throw new StaffIdNotFoundException();
 			} else
-				throw new StaffIdNotFoundException();
+				throw new MedicalStoreIdNotFoundException();
 		} else
-			throw new MedicalStoreIdNotFoundException();
+			throw new AdminIdNotFoundException();
+
 	}
 
 	public ResponseEntity<ResponseStructure<Staff>> deleteStaff(String staff_id) {
