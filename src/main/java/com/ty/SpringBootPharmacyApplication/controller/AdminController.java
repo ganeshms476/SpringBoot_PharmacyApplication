@@ -27,8 +27,8 @@ public class AdminController {
 		return service.saveAdmin(admin);
 	}
 
-	@PutMapping("/admin/{id}")
-	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(@PathVariable int id, @RequestBody Admin admin) {
+	@PutMapping("/admin")
+	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(@RequestParam int id, @RequestBody Admin admin) {
 		return service.updateAdmin(id, admin);
 	}
 
@@ -38,8 +38,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin")
-	public ResponseEntity<ResponseStructure<Admin>> getAdminByid(@PathVariable int id, @RequestBody Admin admin) {
-		return service.updateAdmin(id, admin);
+	public ResponseEntity<ResponseStructure<Admin>> getAdminByid(@RequestParam int id) {
+		return service.getAdminById(id);
 	}
 	
 

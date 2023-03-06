@@ -1,5 +1,6 @@
 package com.ty.SpringBootPharmacyApplication.dto;
 
+
 import java.util.List;
 
 import javax.persistence.Entity;

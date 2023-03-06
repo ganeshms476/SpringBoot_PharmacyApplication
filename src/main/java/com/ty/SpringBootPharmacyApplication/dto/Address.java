@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Address {
+public class Address{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

@@ -23,8 +23,7 @@ public class MedicineDao {
 	public Medicine updateMedicine(Medicine medicine, int medicine_id) {
 		if (repo.findById(medicine_id).isPresent()) {
 			medicine.setId(medicine_id);
-			Medicine medicine2 = repo.save(medicine);
-			return medicine2;
+			return repo.save(medicine);
 		}
 		return null;
 	}
@@ -54,6 +53,5 @@ public class MedicineDao {
 		}
 		return null;
 	}
-	
-	
+
 }

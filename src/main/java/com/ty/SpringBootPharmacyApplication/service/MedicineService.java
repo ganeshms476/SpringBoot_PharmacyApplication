@@ -26,27 +26,32 @@ public class MedicineService {
 	public ResponseEntity<ResponseStructure<Medicine>> saveMedicine(Medicine medicine, int medicalStrore_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
 		MedicalStore medicalStore = medicalStoreDao.getById(medicalStrore_id);
+		medicine.setStore(medicalStore);
 		if (medicalStore != null) {
-			Medicine medicine2 = medicineDao.saveMedicine(medicine);
-			structure.setMessage("Successfully saved medicine");
-			structure.setStatus(HttpStatus.CREATED.value());
-			structure.setData(medicine2);
-			return new ResponseEntity<ResponseStructure<Medicine>>(structure, HttpStatus.CREATED);
-		} else
+			if (medicineDao.saveMedicine(medicine) != null) {
+				structure.setMessage("Successfully saved medicine");
+				structure.setStatus(HttpStatus.CREATED.value());
+				structure.setData(medicine);
+				return new ResponseEntity<ResponseStructure<Medicine>>(structure, HttpStatus.CREATED);
+			} else
+				throw new MedicineIdNotFoundException();
+		} else {
 			throw new MedicalStoreIdNotFoundException();
+		}
+
 	}
 
 	public ResponseEntity<ResponseStructure<Medicine>> updateMedicine(Medicine medicine, int medicine_id,
 			int medicalStore_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
-		Medicine medicine2 = medicineDao.getMedicineById(medicine_id);
+		Medicine medicine2=medicineDao.getMedicineById(medicine_id);
 		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
-		if (medicine2 != null) {
-			if (store != null) {
-				medicine.setId(medicine_id);
+		if (store != null) {
+			if (medicine2 != null) {
+				medicine.setStore(store);
 				structure.setMessage("Successfully updated medicine");
 				structure.setStatus(HttpStatus.OK.value());
-				structure.setData(medicineDao.updateMedicine(medicine2, medicine_id));
+				structure.setData(medicineDao.updateMedicine(medicine, medicine_id));
 				return new ResponseEntity<ResponseStructure<Medicine>>(structure, HttpStatus.OK);
 			} else
 				throw new MedicalStoreIdNotFoundException();

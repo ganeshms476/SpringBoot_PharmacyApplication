@@ -18,7 +18,7 @@ public class Medicine {
 	private int id;
 	private String name;
 	private int cost;
-	private Date date;
+	private String expdate;
 	private int stockQty;
 	private String manfacturer;
 	private String description;

@@ -30,7 +30,7 @@ public class MedicalStoreService {
 
 	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(int adminid, MedicalStore medicalStore,
 			int address_id) {
-		Admin admin = adminDAO.getAdminById(address_id);
+		Admin admin = adminDAO.getAdminById(adminid);
 		admin.setId(adminid);
 		medicalStore.setAdmin(admin);
 		if (addressDao.getByIdAddress(address_id) != null) {
@@ -62,7 +62,7 @@ public class MedicalStoreService {
 			structure.setMessage("successfully Branch is updated");
 			structure.setStatus(HttpStatus.OK.value());
 			structure.setData(rcvMedicalStore);
-			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.FOUND);
+			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.OK);
 		} else {
 			throw new MedicalStoreIdNotFoundException();
 		}
@@ -75,7 +75,7 @@ public class MedicalStoreService {
 			structure.setMessage("successfully Branch is updated");
 			structure.setStatus(HttpStatus.OK.value());
 			structure.setData(rcvMedicalStore);
-			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.FOUND);
+			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.OK);
 		} else {
 			throw new MedicalStoreIdNotFoundException();
 		}
@@ -88,7 +88,7 @@ public class MedicalStoreService {
 			structure.setMessage("successfully Branch is updated");
 			structure.setStatus(HttpStatus.OK.value());
 			structure.setData(rcvMedicalStore);
-			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.FOUND);
+			return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.OK);
 		} else {
 			throw new MedicalStoreIdNotFoundException();
 		}
