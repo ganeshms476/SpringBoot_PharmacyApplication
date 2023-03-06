@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator;
-
+import com.ty.SpringBootPharmacyApplication.dto.Admin;
 import lombok.Data;
 
 @Data
@@ -32,6 +32,7 @@ public class Staff {
 
 	@ManyToOne
 	private Admin admin;
+	
 	@OneToOne
 	private MedicalStore store;
 }

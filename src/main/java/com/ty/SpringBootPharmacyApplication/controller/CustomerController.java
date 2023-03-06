@@ -28,8 +28,8 @@ public class CustomerController {
 	}
 
 	@GetMapping("/loginCustomer")
-	public ResponseEntity<ResponseStructure<Customer>> loginCustomer(@RequestAttribute String email,
-			@RequestAttribute String password) {
+	public ResponseEntity<ResponseStructure<Customer>> loginCustomer(@RequestParam String email,
+			@RequestParam String password) {
 		return service.loginCustomer(email, password);
 	}
 

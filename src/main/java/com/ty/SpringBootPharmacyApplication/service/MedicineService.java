@@ -42,8 +42,9 @@ public class MedicineService {
 		Medicine medicine2 = medicineDao.getMedicineById(medicine_id);
 		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
 		if (store != null) {
-			if (medicine != null) {
+			if (medicine2 != null) {
 				medicine.setId(medicine_id);
+				medicine.setStore(store);
 				structure.setMessage("Successfully updated medicine");
 				structure.setStatus(HttpStatus.OK.value());
 				structure.setData(medicineDao.updateMedicine(medicine, medicine_id));
