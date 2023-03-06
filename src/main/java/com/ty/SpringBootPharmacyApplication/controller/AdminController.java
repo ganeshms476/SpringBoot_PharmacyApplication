@@ -28,23 +28,23 @@ public class AdminController {
 	}
 
 	@PutMapping("/admin/{id}")
-	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(@PathVariable int id, @RequestBody Admin admin) {
+	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(@PathVariable String id, @RequestBody Admin admin) {
 		return service.updateAdmin(id, admin);
 	}
 
 	@DeleteMapping("/admin")
-	public ResponseEntity<ResponseStructure<Admin>> deleteAdmin(@RequestParam int id) {
+	public ResponseEntity<ResponseStructure<Admin>> deleteAdmin(@RequestParam String id) {
 		return service.deleteAdmin(id);
 	}
 
-	@GetMapping("/admin")
-	public ResponseEntity<ResponseStructure<Admin>> getAdminByid(@PathVariable int id, @RequestBody Admin admin) {
-		return service.updateAdmin(id, admin);
+	@GetMapping("/admin/{id}")
+	public ResponseEntity<ResponseStructure<Admin>> getAdminByid(@PathVariable String id) {
+		return service.getAdminById(id);
 	}
-	
 
 	@GetMapping("/loginadmin")
-	public ResponseEntity<ResponseStructure<Admin>> loginAdmin(@RequestParam String email, @RequestParam String password) {
+	public ResponseEntity<ResponseStructure<Admin>> loginAdmin(@RequestParam String email,
+			@RequestParam String password) {
 		return service.loginAdmin(email, password);
 	}
 

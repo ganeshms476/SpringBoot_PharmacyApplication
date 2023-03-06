@@ -19,7 +19,7 @@ public class BookingDAO {
 		return repository.save(booking);
 	}
 
-	public Booking updateBooking(int id, Booking booking) {
+	public Booking updateBooking(String id, Booking booking) {
 		if (repository.findById(id).isPresent()) {
 			booking.setId(id);
 			return repository.save(booking);
@@ -27,7 +27,7 @@ public class BookingDAO {
 			return null;
 	}
 
-	public Booking deleteBooking(int id) {
+	public Booking deleteBooking(String id) {
 		if (repository.findById(id).isPresent()) {
 			Booking booking = repository.findById(id).get();
 			repository.deleteById(id);
@@ -36,7 +36,7 @@ public class BookingDAO {
 			return null;
 	}
 
-	public Booking getBookingById(int id) {
+	public Booking getBookingById(String id) {
 		if (repository.findById(id).isPresent()) {
 			return repository.findById(id).get();
 		} else

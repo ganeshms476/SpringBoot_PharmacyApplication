@@ -6,9 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator;
 
 import lombok.Data;
 
@@ -16,8 +22,12 @@ import lombok.Data;
 @Entity
 public class MedicalStore {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
+	@GenericGenerator(name = "id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
+			@Parameter(name = StringPreFixedIdSequenceGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = StringPreFixedIdSequenceGenerator.VALUE_PREFIXE_PARAMETER, value = "store_"),
+			@Parameter(name = StringPreFixedIdSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
+	private String id;
 	private String name;
 	private String gst;
 	private String license;
@@ -28,9 +38,5 @@ public class MedicalStore {
 
 	@OneToOne
 	private Address address;
-
-	@OneToMany
-	private List<Medicine> list;
-	
 
 }

@@ -23,7 +23,7 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(AddressIdNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> getException(AddressIdNotFoundException ex) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setMessage("Address not found");
+		structure.setMessage("Address Id not found");
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
@@ -41,7 +41,16 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(AdminIdNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> getException(AdminIdNotFoundException ex) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setMessage("Admin not found");
+		structure.setMessage("Admin Id not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(AdminPasswordInvalidException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(AdminPasswordInvalidException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Admin password is not valid");
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
@@ -50,7 +59,7 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(MedicalStoreDataNotFoundExcpetion.class)
 	public ResponseEntity<ResponseStructure<String>> getException(MedicalStoreDataNotFoundExcpetion ex) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setMessage("Medical store not found");
+		structure.setMessage("Medical store data not found");
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
@@ -81,11 +90,127 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(BookingArrivalDateNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> getException(BookingArrivalDateNotFoundException ex) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setMessage("MedicalStore Id not found");
+		structure.setMessage("Booking Arrival date not found");
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
-	
+
+	@ExceptionHandler(BookingDataNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(BookingDataNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Booking data not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(BookingIdNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(BookingIdNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Booking Id not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(BookingOrderDateNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(BookingOrderDateNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Booking Order date not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(CustomerIdNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(CustomerIdNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Customer Id not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(CustomerDataNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(CustomerDataNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Customer data not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(CustomerEmailNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(CustomerEmailNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Customer Email is not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(CustomerPasswordNotValidException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(CustomerPasswordNotValidException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Customer Password is not valid");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(MedicineIdNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(MedicineIdNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Medicine Id not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(MedicineDataNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(MedicineDataNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Medicine data not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(MedicineNameNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(MedicineNameNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Medicine name is not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(StaffIdNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(StaffIdNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Staff Id not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(StaffEmailNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(StaffEmailNotFoundException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Staff Email is not found");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(StaffPasswordNotValidException.class)
+	public ResponseEntity<ResponseStructure<String>> getException(StaffPasswordNotValidException ex) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Staff Password is not valid");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
 
 }

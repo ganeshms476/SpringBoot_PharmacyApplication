@@ -27,7 +27,7 @@ public class AdminService {
 		return new ResponseEntity<ResponseStructure<Admin>>(structure, HttpStatus.CREATED);
 	}
 
-	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(int id, Admin admin) {
+	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(String id, Admin admin) {
 		ResponseStructure<Admin> structure = new ResponseStructure<>();
 		if (dao.updateAdmin(id, admin) != null) {
 			structure.setMessage("Updated");
@@ -39,7 +39,7 @@ public class AdminService {
 		}
 	}
 
-	public ResponseEntity<ResponseStructure<Admin>> deleteAdmin(int id) {
+	public ResponseEntity<ResponseStructure<Admin>> deleteAdmin(String id) {
 		ResponseStructure<Admin> structure = new ResponseStructure<>();
 		if (dao.deleteAdmin(id) != null) {
 			structure.setMessage("Deleted");
@@ -51,7 +51,7 @@ public class AdminService {
 		}
 	}
 
-	public ResponseEntity<ResponseStructure<Admin>> getAdminById(int id) {
+	public ResponseEntity<ResponseStructure<Admin>> getAdminById(String id) {
 		ResponseStructure<Admin> structure = new ResponseStructure<>();
 		if (dao.getAdminById(id) != null) {
 			structure.setMessage("Fetched");

@@ -18,7 +18,7 @@ public class AddressDao {
 		 return repo.save(address);
 	 }
 	 
-	 public Address updateAddress(Address address,int id) {
+	 public Address updateAddress(Address address,String id) {
 		 if(repo.findById(id).isPresent()) {
 			 address.setId(id);
 			 return repo.save(address);
@@ -27,7 +27,7 @@ public class AddressDao {
 			 return null;
 	 }
 	 
-	 public Address deletAddress(int id) {
+	 public Address deletAddress(String id) {
 		 Address address=repo.findById(id).get();
 		 if(repo.findById(id).isPresent()) {
 			 repo.deleteById(id);
@@ -36,7 +36,7 @@ public class AddressDao {
 		 else 
 			 return null;
 	 }
-	 public Address getByIdAddress(int  id) {
+	 public Address getByIdAddress(String  id) {
 		 if(repo.findById(id).isPresent()) {
 			 Address address2=repo.findById(id).get();
 			 return address2;

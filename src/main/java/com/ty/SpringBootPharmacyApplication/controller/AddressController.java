@@ -25,17 +25,17 @@ public class AddressController {
 	 }
 	 
 	 @PutMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> updateAddress(@RequestBody Address address,@RequestParam int id){
+	 public ResponseEntity<ResponseStructure<Address>> updateAddress(@RequestBody Address address,@RequestParam String id){
 		 return service.updateAddress(address, id);
 	 }
 	 
 	 @GetMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> getByIdAddress(@RequestParam int id){
+	 public ResponseEntity<ResponseStructure<Address>> getByIdAddress(@RequestParam String id){
 		 return service.getByIdAddress(id);
 	 }
 	 
 	 @DeleteMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> deleteAddress(@RequestParam int id){
+	 public ResponseEntity<ResponseStructure<Address>> deleteAddress(@RequestParam String id){
 		 return service.deleteAddress(id);
 	 }
 }
