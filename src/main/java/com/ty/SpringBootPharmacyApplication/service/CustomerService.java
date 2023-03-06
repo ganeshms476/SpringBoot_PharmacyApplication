@@ -46,7 +46,7 @@ public class CustomerService {
 
 	}
 
-	public ResponseEntity<ResponseStructure<Customer>> updateCustomer(Customer customer, int customer_id) {
+	public ResponseEntity<ResponseStructure<Customer>> updateCustomer(Customer customer, String customer_id) {
 		ResponseStructure<Customer> structure = new ResponseStructure<>();
 		Customer customer2 = customerDao.getCustomerById(customer_id);
 		if (customer2 != null) {
@@ -59,7 +59,7 @@ public class CustomerService {
 			throw new CustomerIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Customer>> deleteCustomer(int customer_id) {
+	public ResponseEntity<ResponseStructure<Customer>> deleteCustomer(String customer_id) {
 		ResponseStructure<Customer> structure = new ResponseStructure<>();
 		Customer customer = customerDao.getCustomerById(customer_id);
 		if (customer != null) {
@@ -71,7 +71,7 @@ public class CustomerService {
 			throw new CustomerIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Customer>> getCustomerById(int customer_id) {
+	public ResponseEntity<ResponseStructure<Customer>> getCustomerById(String customer_id) {
 		ResponseStructure<Customer> structure = new ResponseStructure<>();
 		Customer customer = customerDao.getCustomerById(customer_id);
 		if (customer != null) {

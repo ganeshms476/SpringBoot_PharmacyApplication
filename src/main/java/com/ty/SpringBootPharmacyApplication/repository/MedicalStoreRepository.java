@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.ty.SpringBootPharmacyApplication.dto.MedicalStore;
 import com.ty.SpringBootPharmacyApplication.dto.Medicine;
 
-public interface MedicalStoreRepository extends JpaRepository<MedicalStore, Integer> {
+public interface MedicalStoreRepository extends JpaRepository<MedicalStore, String> {
 
 	}

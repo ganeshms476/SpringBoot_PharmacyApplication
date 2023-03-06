@@ -28,30 +28,32 @@ public class MedicalStoreService {
 	@Autowired
 	private AddressDao addressDao;
 
-	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(int adminid, MedicalStore medicalStore,
-			int address_id) {
-		Admin admin = adminDAO.getAdminById(address_id);
-		admin.setId(adminid);
-		medicalStore.setAdmin(admin);
-		if (addressDao.getByIdAddress(address_id) != null) {
-			if (adminDAO.getAdminById(adminid) != null) {
-				ResponseStructure<MedicalStore> structure = new ResponseStructure<MedicalStore>();
-				structure.setMessage("successfully medical store is saved");
-				structure.setStatus(HttpStatus.CREATED.value());
-				structure.setData(dao.saveAddress(medicalStore, address_id));
-				return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.CREATED);
+	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(String adminid, MedicalStore medicalStore,
+			String address_id) {
+		Admin admin = adminDAO.getAdminById(adminid);
+		if (admin != null) {
+			admin.setId(adminid);
+			medicalStore.setAdmin(admin);
+			if (addressDao.getByIdAddress(address_id) != null) {
+				if (adminDAO.getAdminById(adminid) != null) {
+					ResponseStructure<MedicalStore> structure = new ResponseStructure<MedicalStore>();
+					structure.setMessage("successfully medical store is saved");
+					structure.setStatus(HttpStatus.CREATED.value());
+					structure.setData(dao.saveAddress(medicalStore, address_id));
+					return new ResponseEntity<ResponseStructure<MedicalStore>>(structure, HttpStatus.CREATED);
+				} else {
+					throw new AdminIdNotFoundException();
+				}
+
 			} else {
-				throw new AdminIdNotFoundException();
+				throw new AddressIdNotFoundException();
 			}
-
-		} else {
-			throw new AddressIdNotFoundException();
-		}
-
+		} else
+			throw new AdminIdNotFoundException();
 	}
 
 	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore(MedicalStore medicalStore,
-			int medicalStore_id, int adminid, int addressid) {
+			String medicalStore_id, String adminid, String addressid) {
 		Admin admin = adminDAO.getAdminById(adminid);
 		Address address = addressDao.getByIdAddress(addressid);
 		medicalStore.setAdmin(admin);
@@ -68,7 +70,7 @@ public class MedicalStoreService {
 		}
 	}
 
-	public ResponseEntity<ResponseStructure<MedicalStore>> getByIdMedicalStore(int medicalStore_id) {
+	public ResponseEntity<ResponseStructure<MedicalStore>> getByIdMedicalStore(String medicalStore_id) {
 		ResponseStructure<MedicalStore> structure = new ResponseStructure<MedicalStore>();
 		MedicalStore rcvMedicalStore = dao.getById(medicalStore_id);
 		if (rcvMedicalStore != null) {
@@ -81,7 +83,7 @@ public class MedicalStoreService {
 		}
 	}
 
-	public ResponseEntity<ResponseStructure<MedicalStore>> deleteById(int medicalStore_id) {
+	public ResponseEntity<ResponseStructure<MedicalStore>> deleteById(String medicalStore_id) {
 		ResponseStructure<MedicalStore> structure = new ResponseStructure<MedicalStore>();
 		MedicalStore rcvMedicalStore = dao.deleteMedicalStore(medicalStore_id);
 		if (rcvMedicalStore != null) {

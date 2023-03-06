@@ -32,7 +32,7 @@ public class BookingService {
 	@Autowired
 	private MedicineDao medicineDao;
 
-	public ResponseEntity<ResponseStructure<Booking>> saveBooking(Booking booking, int customer_id, int medicine_id) {
+	public ResponseEntity<ResponseStructure<Booking>> saveBooking(Booking booking, String customer_id, String medicine_id) {
 		ResponseStructure<Booking> structure = new ResponseStructure<>();
 		Medicine medicine = medicineDao.getMedicineById(medicine_id);
 		Customer customer = customerdao.getCustomerById(customer_id);
@@ -52,7 +52,7 @@ public class BookingService {
 			throw new CustomerIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Booking>> updateBooking(Booking booking, int booking_id, int customer_id) {
+	public ResponseEntity<ResponseStructure<Booking>> updateBooking(Booking booking, String booking_id, String customer_id) {
 		ResponseStructure<Booking> structure = new ResponseStructure<>();
 		Customer customer = customerdao.getCustomerById(customer_id);
 		Booking booking1 = bookingDAO.getBookingById(booking_id);
@@ -70,7 +70,7 @@ public class BookingService {
 			throw new CustomerIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Booking>> deleteBooking(int booking_id) {
+	public ResponseEntity<ResponseStructure<Booking>> deleteBooking(String booking_id) {
 		ResponseStructure<Booking> structure = new ResponseStructure<>();
 		Booking booking = bookingDAO.getBookingById(booking_id);
 		if (booking != null) {
@@ -82,7 +82,7 @@ public class BookingService {
 			throw new BookingIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Booking>> getBookingById(int booking_id) {
+	public ResponseEntity<ResponseStructure<Booking>> getBookingById(String booking_id) {
 		ResponseStructure<Booking> structure = new ResponseStructure<>();
 		Booking booking = bookingDAO.getBookingById(booking_id);
 		if (booking != null) {
@@ -94,7 +94,7 @@ public class BookingService {
 			throw new BookingIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<List<Booking>>> getAllBookingByCustomerId(int customer_id) {
+	public ResponseEntity<ResponseStructure<List<Booking>>> getAllBookingByCustomerId(String customer_id) {
 		ResponseStructure<List<Booking>> structure = new ResponseStructure<>();
 		Customer customer = customerdao.getCustomerById(customer_id);
 		if (customer != null) {

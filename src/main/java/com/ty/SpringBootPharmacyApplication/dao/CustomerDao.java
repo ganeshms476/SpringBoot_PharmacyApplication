@@ -21,7 +21,7 @@ public class CustomerDao {
 		return repo.getCustomerByEmail(email);
 	}
 
-	public Customer updateCustomer(Customer customer, int customer_id) {
+	public Customer updateCustomer(Customer customer, String customer_id) {
 		if (repo.findById(customer_id).isPresent()) {
 			customer.setId(customer_id);
 			Customer customer2 = repo.save(customer);
@@ -31,7 +31,7 @@ public class CustomerDao {
 
 	}
 
-	public Customer deleteCustomer(int customer_id) {
+	public Customer deleteCustomer(String  customer_id) {
 		if (repo.findById(customer_id).isPresent()) {
 			Customer customer = repo.findById(customer_id).get();
 			repo.delete(customer);
@@ -40,7 +40,7 @@ public class CustomerDao {
 			return null;
 	}
 
-	public Customer getCustomerById(int customer_id) {
+	public Customer getCustomerById(String  customer_id) {
 		if (repo.findById(customer_id).isPresent()) {
 			Customer customer = repo.findById(customer_id).get();
 			return customer;

@@ -23,38 +23,39 @@ public class MedicineService {
 	@Autowired
 	private MedicalStoreDao medicalStoreDao;
 
-	public ResponseEntity<ResponseStructure<Medicine>> saveMedicine(Medicine medicine, int medicalStrore_id) {
+	public ResponseEntity<ResponseStructure<Medicine>> saveMedicine(Medicine medicine, String medicalStrore_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
 		MedicalStore medicalStore = medicalStoreDao.getById(medicalStrore_id);
 		if (medicalStore != null) {
-			Medicine medicine2 = medicineDao.saveMedicine(medicine);
+			medicine.setStore(medicalStore);
 			structure.setMessage("Successfully saved medicine");
 			structure.setStatus(HttpStatus.CREATED.value());
-			structure.setData(medicine2);
+			structure.setData(medicineDao.saveMedicine(medicine));
 			return new ResponseEntity<ResponseStructure<Medicine>>(structure, HttpStatus.CREATED);
 		} else
 			throw new MedicalStoreIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Medicine>> updateMedicine(Medicine medicine, int medicine_id,
-			int medicalStore_id) {
+	public ResponseEntity<ResponseStructure<Medicine>> updateMedicine(Medicine medicine, String medicine_id,
+			String medicalStore_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
 		Medicine medicine2 = medicineDao.getMedicineById(medicine_id);
 		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
-		if (medicine2 != null) {
-			if (store != null) {
+		if (store != null) {
+			if (medicine != null) {
 				medicine.setId(medicine_id);
 				structure.setMessage("Successfully updated medicine");
 				structure.setStatus(HttpStatus.OK.value());
-				structure.setData(medicineDao.updateMedicine(medicine2, medicine_id));
+				structure.setData(medicineDao.updateMedicine(medicine, medicine_id));
 				return new ResponseEntity<ResponseStructure<Medicine>>(structure, HttpStatus.OK);
 			} else
-				throw new MedicalStoreIdNotFoundException();
+				throw new MedicineIdNotFoundException();
+
 		} else
-			throw new MedicineIdNotFoundException();
+			throw new MedicalStoreIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Medicine>> deleteMedicine(int medicine_id) {
+	public ResponseEntity<ResponseStructure<Medicine>> deleteMedicine(String medicine_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
 		Medicine medicine2 = medicineDao.getMedicineById(medicine_id);
 		if (medicine2 != null) {
@@ -66,7 +67,7 @@ public class MedicineService {
 			throw new MedicineIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<Medicine>> getMedicineById(int medicine_id) {
+	public ResponseEntity<ResponseStructure<Medicine>> getMedicineById(String medicine_id) {
 		ResponseStructure<Medicine> structure = new ResponseStructure<>();
 		Medicine medicine = medicineDao.getMedicineById(medicine_id);
 		if (medicine != null) {
@@ -78,7 +79,7 @@ public class MedicineService {
 			throw new MedicineIdNotFoundException();
 	}
 
-	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicinesByMedicalStoreId(int medicalStore_id) {
+	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicinesByMedicalStoreId(String medicalStore_id) {
 		ResponseStructure<List<Medicine>> structure = new ResponseStructure<>();
 		MedicalStore store = medicalStoreDao.getById(medicalStore_id);
 		if (store != null) {

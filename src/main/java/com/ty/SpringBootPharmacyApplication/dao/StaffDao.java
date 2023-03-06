@@ -23,14 +23,14 @@ public class StaffDao {
 		return repo.getStaffByEmail(email);
 	}
 
-	public Staff updateStaff(Staff staff, int staff_id) {
+	public Staff updateStaff(Staff staff, String staff_id) {
 		if (repo.findById(staff_id).isPresent()) {
 			return repo.save(staff);
 		} else
 			return null;
 	}
 
-	public Staff deleteStaff(int staff_id) {
+	public Staff deleteStaff(String staff_id) {
 		if (repo.findById(staff_id).isPresent()) {
 			Staff staff = repo.findById(staff_id).get();
 			repo.delete(staff);
@@ -39,7 +39,7 @@ public class StaffDao {
 			return null;
 	}
 
-	public Staff getStaffById(int staff_id) {
+	public Staff getStaffById(String staff_id) {
 		if (repo.findById(staff_id).isPresent()) {
 			Staff staff = repo.findById(staff_id).get();
 			return staff;

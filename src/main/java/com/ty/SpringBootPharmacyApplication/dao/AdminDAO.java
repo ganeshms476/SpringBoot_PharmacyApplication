@@ -24,7 +24,7 @@ public class AdminDAO {
 			return null;
 	}
 
-	public Admin updateAdmin(int id, Admin admin) {
+	public Admin updateAdmin(String id, Admin admin) {
 		if (repo.findById(id).isPresent()) {
 			admin.setId(id);
 			return repo.save(admin);
@@ -33,7 +33,7 @@ public class AdminDAO {
 		}
 	}
 
-	public Admin deleteAdmin(int id) {
+	public Admin deleteAdmin(String id) {
 		if (repo.findById(id).isPresent()) {
 			Admin admin = repo.findById(id).get();
 			repo.deleteById(id);
@@ -43,7 +43,7 @@ public class AdminDAO {
 		}
 	}
 
-	public Admin getAdminById(int id) {
+	public Admin getAdminById(String id) {
 		if (repo.findById(id).isPresent()) {
 			return repo.findById(id).get();
 		} else {

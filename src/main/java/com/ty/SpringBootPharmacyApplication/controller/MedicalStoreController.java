@@ -20,21 +20,21 @@ public class MedicalStoreController {
 	private MedicalStoreService service;
 	
 	@PostMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(@RequestParam int admin_id,@RequestBody MedicalStore medicalStore,@RequestParam int address_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> saveMedicalStore(@RequestBody MedicalStore medicalStore,@RequestParam String admin_id,@RequestParam String  address_id){
 		return service.saveMedicalStore(admin_id, medicalStore, address_id);
 	}
 	
 	@PutMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore (@RequestBody MedicalStore medicalStore,@RequestParam int medicalStore_id,@RequestParam int admin_id,@RequestParam int address_id ){
+	public ResponseEntity<ResponseStructure<MedicalStore>> updateMedicalStore (@RequestBody MedicalStore medicalStore,@RequestParam String medicalStore_id,@RequestParam String admin_id,@RequestParam String address_id ){
 		return service.updateMedicalStore(medicalStore, medicalStore_id, admin_id, address_id);
 	}
 	
 	@DeleteMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore (@RequestParam int medicalStore_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore (@RequestParam String medicalStore_id){
 		return service.deleteById(medicalStore_id);
 	}
 	@GetMapping("/medicalstore")
-	public ResponseEntity<ResponseStructure<MedicalStore>> getByMedicalStoreId ( @RequestParam int medicalStore_id){
+	public ResponseEntity<ResponseStructure<MedicalStore>> getByMedicalStoreId ( @RequestParam String medicalStore_id){
 		return service.getByIdMedicalStore(medicalStore_id);
 	}
 }

@@ -35,17 +35,17 @@ public class CustomerController {
 
 	@PutMapping("/customer")
 	public ResponseEntity<ResponseStructure<Customer>> updateCustomer(@RequestBody Customer customer,
-			@RequestParam int customer_id) {
+			@RequestParam String customer_id) {
 		return service.updateCustomer(customer, customer_id);
 	}
 
 	@DeleteMapping("/customer")
-	public ResponseEntity<ResponseStructure<Customer>> deleteCustomer(@RequestParam int customer_id) {
+	public ResponseEntity<ResponseStructure<Customer>> deleteCustomer(@RequestParam String customer_id) {
 		return service.deleteCustomer(customer_id);
 	}
 
 	@GetMapping("/customer")
-	public ResponseEntity<ResponseStructure<Customer>> getCustomerById(@RequestParam int customer_id) {
+	public ResponseEntity<ResponseStructure<Customer>> getCustomerById(@RequestParam String customer_id) {
 		return service.getCustomerById(customer_id);
 	}
 

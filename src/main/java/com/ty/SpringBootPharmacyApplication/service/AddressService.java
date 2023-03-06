@@ -21,7 +21,7 @@ public class AddressService {
 		structure.setData(addressDao.saveAddress(address));
 		return new ResponseEntity<ResponseStructure<Address>>(structure,HttpStatus.CREATED);
 	}
-	 public ResponseEntity<ResponseStructure<Address>> updateAddress(Address address,int id){
+	 public ResponseEntity<ResponseStructure<Address>> updateAddress(Address address,String  id){
 		 Address rcvAddress=addressDao.updateAddress(address, id);
 		 if(rcvAddress!=null) {
 			 ResponseStructure<Address> structure=new ResponseStructure<Address>();
@@ -34,7 +34,7 @@ public class AddressService {
 			  throw new AddressIdNotFoundException();
 		}
 	 }
-	 public ResponseEntity<ResponseStructure<Address>> deleteAddress(int id){
+	 public ResponseEntity<ResponseStructure<Address>> deleteAddress(String id){
 		 Address rcvAddress=addressDao.deletAddress(id);
 		 if(rcvAddress!=null) {
 			 ResponseStructure<Address> structure=new ResponseStructure<Address>();
@@ -47,7 +47,7 @@ public class AddressService {
 			  throw new AddressIdNotFoundException();
 		}
 	 }
-	 public ResponseEntity<ResponseStructure<Address>> getByIdAddress(int id){
+	 public ResponseEntity<ResponseStructure<Address>> getByIdAddress(String id){
 		 Address rcvAddress=addressDao.getByIdAddress(id);
 		 if(rcvAddress!=null) {
 			 ResponseStructure<Address> structure=new ResponseStructure<Address>();
