@@ -1,8 +1,13 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -72,19 +77,6 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
-	}
-
-	@Override
-	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		List<ObjectError> exceptions = ex.getAllErrors();
-		Map<String, String> map = new LinkedHashMap<>();
-		for (ObjectError error : exceptions) {
-			String fieldname = ((FieldError) error).getField();
-			String message = ((FieldError) error).getDefaultMessage();
-			map.put(fieldname, message);
-		}
-		return new ResponseEntity<Object>(map, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(BookingArrivalDateNotFoundException.class)
@@ -211,6 +203,34 @@ public class ExceptionHandle extends ResponseEntityExceptionHandler {
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+	
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+		List<ObjectError> errorList = ex.getAllErrors();
+		Map<String, String> map = new LinkedHashMap<>();
+
+		for (ObjectError err : errorList) {
+			String feildName = ((FieldError) err).getField();
+			String message = err.getDefaultMessage();
+
+			map.put(feildName, message);
+		}
+		return new ResponseEntity<Object>(map, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<Object> handleConstriantEntityViolationException(ConstraintViolationException constExcep) {
+
+		Set<ConstraintViolation<?>> set = constExcep.getConstraintViolations();
+		List<String> list = new ArrayList<>();
+		for (ConstraintViolation<?> constViolation : set) {
+			String name = constViolation.getMessage();
+			list.add(name);
+		}
+		return new ResponseEntity<Object>(list, HttpStatus.BAD_REQUEST);
 	}
 
 }
