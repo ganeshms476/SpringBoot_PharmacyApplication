@@ -1,7 +1,7 @@
 package com.ty.SpringBootPharmacyApplication.exception;
 
-public class BookingOrderDateNotFoundException {
-	String message="Booking Order Date Not Found";
+public class BookingOrderDateNotFoundException extends RuntimeException {
+	String message = "Booking Order Date Not Found";
 
 	public String getMessage() {
 		return message;
@@ -19,6 +19,5 @@ public class BookingOrderDateNotFoundException {
 	public BookingOrderDateNotFoundException() {
 		super();
 	}
-	
-	
+
 }

@@ -18,12 +18,12 @@ public class MedicalStoreDao<AddressRepository> {
 	@Autowired
 	private AddressDao addressDao;
 	
-	public MedicalStore saveAddress(MedicalStore medicalStore,int address_id) {
+	public MedicalStore saveAddress(MedicalStore medicalStore,String  address_id) {
 		Address address=addressDao.getByIdAddress(address_id);
 		medicalStore.setAddress(address);
 		return repository.save(medicalStore);
 	}
-	public MedicalStore updateAddress(int id,MedicalStore medicalStore) {
+	public MedicalStore updateAddress(String  id,MedicalStore medicalStore) {
 		if(repository.findById(id).isPresent()) {
 			medicalStore.setId(id);
 			return repository.save(medicalStore);
@@ -32,7 +32,7 @@ public class MedicalStoreDao<AddressRepository> {
 			return null;
 		}
 	}
-	public MedicalStore deleteMedicalStore(int id) {
+	public MedicalStore deleteMedicalStore(String  id) {
 		MedicalStore store=repository.findById(id).get();
 		if(repository.findById(id).isPresent()) {
 			repository.deleteById(id);
@@ -43,7 +43,7 @@ public class MedicalStoreDao<AddressRepository> {
 		}
 	}
 	
-	public MedicalStore getById(int id) { 
+	public MedicalStore getById(String  id) { 
 		if(repository.findById(id).isPresent()) {
 			MedicalStore store=repository.findById(id).get();
 			return store;

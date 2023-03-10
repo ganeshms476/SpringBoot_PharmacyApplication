@@ -31,16 +31,16 @@ public class MedicineController {
 
 	@PostMapping("/medicine")
 	public ResponseEntity<ResponseStructure<Medicine>> saveMedicine(@RequestBody Medicine medicine,
-			@RequestParam int medicalStore_id) {
+			@RequestParam String medicalStore_id) {
 		return service.saveMedicine(medicine, medicalStore_id);
 	}
 
 	@ApiOperation(value = "update medicine", notes = " Api is used to update the medicine and medicalstore")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully updated"),
-			@ApiResponse(code = 404, message = "medicine not found for the given medicine id and medicalstore") })
+	@ApiResponse(code = 404, message = "medicine not found for the given medicine id and medicalstore") })
 	@PutMapping("/medicine")
 	public ResponseEntity<ResponseStructure<Medicine>> updateMedicine(@RequestBody Medicine medicine,
-			@RequestParam int medicine_id, @RequestParam int medicalStore_id) {
+			@RequestParam String medicine_id, @RequestParam String medicalStore_id) {
 		return service.updateMedicine(medicine, medicine_id, medicalStore_id);
 	}
 	
@@ -48,7 +48,7 @@ public class MedicineController {
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully deleted"),
 			@ApiResponse(code = 404, message = "medicine not found for the given medicine id") })
 	@DeleteMapping("/medicine")
-	public ResponseEntity<ResponseStructure<Medicine>> deleteMedicine(@RequestParam int medicine_id) {
+	public ResponseEntity<ResponseStructure<Medicine>> deleteMedicine(@RequestParam String medicine_id) {
 		return service.deleteMedicine(medicine_id);
 	}
 	
@@ -56,14 +56,14 @@ public class MedicineController {
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully found"),
 			@ApiResponse(code = 404, message = "medicine not found for the given medicine id") })
 	@GetMapping("/medicine")
-	public ResponseEntity<ResponseStructure<Medicine>> getMedicineById(@RequestParam int medicine_id) {
+	public ResponseEntity<ResponseStructure<Medicine>> getMedicineById(@RequestParam String medicine_id) {
 		return service.getMedicineById(medicine_id);
 	}
 
-	@GetMapping("/AllMedicines")
-	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicineByMedicalStoreId(
-			@RequestParam int medicalStore_id) {
-		return service.getAllMedicinesByMedicalStoreId(medicalStore_id);
-	}
+//	@GetMapping("/AllMedicines")
+//	public ResponseEntity<ResponseStructure<List<Medicine>>> getAllMedicineByMedicalStoreId(
+//			@RequestParam int medicalStore_id) {
+//		return service.getAllMedicinesByMedicalStoreId(medicalStore_id);
+//	}
 
 }

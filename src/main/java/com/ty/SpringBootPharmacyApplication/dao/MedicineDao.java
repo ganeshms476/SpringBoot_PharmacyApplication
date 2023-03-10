@@ -20,7 +20,7 @@ public class MedicineDao {
 		return repo.save(medicine);
 	}
 
-	public Medicine updateMedicine(Medicine medicine, int medicine_id) {
+	public Medicine updateMedicine(Medicine medicine, String  medicine_id) {
 		if (repo.findById(medicine_id).isPresent()) {
 			medicine.setId(medicine_id);
 			Medicine medicine2 = repo.save(medicine);
@@ -29,7 +29,7 @@ public class MedicineDao {
 		return null;
 	}
 
-	public Medicine deleteMedicine(int medicine_id) {
+	public Medicine deleteMedicine(String medicine_id) {
 		if (repo.findById(medicine_id).isPresent()) {
 			Medicine medicine = repo.findById(medicine_id).get();
 			repo.delete(medicine);
@@ -38,7 +38,7 @@ public class MedicineDao {
 		return null;
 	}
 
-	public Medicine getMedicineById(int medicine_id) {
+	public Medicine getMedicineById(String medicine_id) {
 		if (repo.findById(medicine_id).isPresent()) {
 			Medicine medicine = repo.findById(medicine_id).get();
 			return medicine;
@@ -46,7 +46,7 @@ public class MedicineDao {
 		return null;
 	}
 
-	public List<Medicine> getAllMedicine(int medicalstore_id) {
+	public List<Medicine> getAllMedicine(String medicalstore_id) {
 		MedicalStore store = storeDao.getById(medicalstore_id);
 		if (store != null) {
 			List<Medicine> list = repo.getAllMedicineByMedicalStore(store);
@@ -54,4 +54,5 @@ public class MedicineDao {
 		}
 		return null;
 	}
+
 }
