@@ -48,7 +48,9 @@ public class MedicalStoreController {
 	public ResponseEntity<ResponseStructure<MedicalStore>> deleteMedicalStore(@RequestParam String medicalStore_id) {
 		return service.deleteById(medicalStore_id);
 	}
-
+	@ApiOperation(value = "Get MedicalStore", notes = " Api is used to get medicalstore By id")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully fetched"),
+			@ApiResponse(code = 404, message = "Medical Store id not found") })
 	@GetMapping("/medicalstore")
 	public ResponseEntity<ResponseStructure<MedicalStore>> getByMedicalStoreId(@RequestParam String medicalStore_id) {
 		return service.getByIdMedicalStore(medicalStore_id);
