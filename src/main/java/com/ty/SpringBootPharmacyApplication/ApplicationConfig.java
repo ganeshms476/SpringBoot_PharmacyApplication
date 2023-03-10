@@ -22,11 +22,11 @@ public class ApplicationConfig {
 
 		List<VendorExtension> list = new ArrayList<>();
 
-		ApiInfo info = new ApiInfo("Hospital_App", "pharmacy api v1.0", "version 1.0", "www.testyantra.global.com",
+		ApiInfo info = new ApiInfo("Hospital_App", "hospital api v1.0", "version 1.0", "www.testyantra.global.com",
 				contact, "testyantra", "www.tyss.com", list);
 
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("SpringBootPharmacyApplication")).build().apiInfo(info)
+				.apis(RequestHandlerSelectors.basePackage("com.ty.springboot_project")).build().apiInfo(info)
 				.useDefaultResponseMessages(false);
 	}
 }

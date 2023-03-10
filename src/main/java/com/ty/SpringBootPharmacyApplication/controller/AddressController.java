@@ -23,37 +23,37 @@ public class AddressController {
 
 	@Autowired
 	private AddressService service;
-	
+
 	@ApiOperation(value = "Save Address", notes = " Api is used to Save the address")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully updated"),
 			@ApiResponse(code = 404, message = "Address not found for the given address id") })
-	 @PostMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> saveAddress(@RequestBody Address address){
-		 return service.saveAddress(address);
-	 }
-	 
+	@PostMapping("/address")
+	public ResponseEntity<ResponseStructure<Address>> saveAddress(@RequestBody Address address) {
+		return service.saveAddress(address);
+	}
+
 	@ApiOperation(value = "Update Address", notes = " Api is used to Update the address using address id")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully updated"),
 			@ApiResponse(code = 404, message = "Address not found for the given address id") })
-	 @PostMapping("/address")
-	 @PutMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> updateAddress(@RequestBody Address address,@RequestParam String id){
-		 return service.updateAddress(address, id);
-	 }
+	@PutMapping("/address")
+	public ResponseEntity<ResponseStructure<Address>> updateAddress(@RequestBody Address address,
+			@RequestParam String id) {
+		return service.updateAddress(address, id);
+	}
+
 	@ApiOperation(value = "get Address By Id", notes = " Api is used to get the address using address Id")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully fetched"),
 			@ApiResponse(code = 404, message = "Address not found for the given address id") })
-	 @PostMapping("/address")
-	 @GetMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> getByIdAddress(@RequestParam String id){
-		 return service.getByIdAddress(id);
-	 }
+	@GetMapping("/address")
+	public ResponseEntity<ResponseStructure<Address>> getByIdAddress(@RequestParam String id) {
+		return service.getByIdAddress(id);
+	}
+
 	@ApiOperation(value = "Delete Address", notes = " Api is used to delete the address")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully deleted"),
 			@ApiResponse(code = 404, message = "Address not found for the given address id") })
-	 @PostMapping("/address")
-	 @DeleteMapping("/address")
-	 public ResponseEntity<ResponseStructure<Address>> deleteAddress(@RequestParam String id){
-		 return service.deleteAddress(id);
-	 }
+	@DeleteMapping("/address")
+	public ResponseEntity<ResponseStructure<Address>> deleteAddress(@RequestParam String id) {
+		return service.deleteAddress(id);
+	}
 }
