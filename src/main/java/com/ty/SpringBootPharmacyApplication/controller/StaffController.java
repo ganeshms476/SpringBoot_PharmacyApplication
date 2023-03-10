@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ty.SpringBootPharmacyApplication.dto.Staff;
 import com.ty.SpringBootPharmacyApplication.service.StaffService;
 import com.ty.SpringBootPharmacyApplication.util.ResponseStructure;
+
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
- 
 
 @RestController
 public class StaffController {
@@ -65,4 +64,5 @@ public class StaffController {
 	public ResponseEntity<ResponseStructure<Staff>> getStaffById(@RequestParam String staff_id) {
 		return service.getStaffById(staff_id);
 	}
+
 }

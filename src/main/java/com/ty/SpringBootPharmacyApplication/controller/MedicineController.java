@@ -37,7 +37,7 @@ public class MedicineController {
 
 	@ApiOperation(value = "update medicine", notes = " Api is used to update the medicine and medicalstore")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully updated"),
-			@ApiResponse(code = 404, message = "medicine not found for the given medicine id") })
+	@ApiResponse(code = 404, message = "medicine not found for the given medicine id and medicalstore") })
 	@PutMapping("/medicine")
 	public ResponseEntity<ResponseStructure<Medicine>> updateMedicine(@RequestBody Medicine medicine,
 			@RequestParam String medicine_id, @RequestParam String medicalStore_id) {
