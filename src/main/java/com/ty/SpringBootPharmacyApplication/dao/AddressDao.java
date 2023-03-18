@@ -28,8 +28,8 @@ public class AddressDao {
 	 }
 	 
 	 public Address deletAddress(String id) {
-		 Address address=repo.findById(id).get();
 		 if(repo.findById(id).isPresent()) {
+			 Address address=repo.findById(id).get();
 			 repo.deleteById(id);
 			 return address;
 		 }

@@ -21,8 +21,8 @@ import lombok.Data;
 @Data
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-	@GenericGenerator(name = "id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_id")
+	@GenericGenerator(name = "address_id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
 			@Parameter(name = StringPreFixedIdSequenceGenerator.INCREMENT_PARAM, value = "1"),
 			@Parameter(name = StringPreFixedIdSequenceGenerator.VALUE_PREFIXE_PARAMETER, value = "address_"),
 			@Parameter(name = StringPreFixedIdSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
@@ -41,7 +41,7 @@ public class Address {
 	private String state;
 	@NotBlank(message = "pincode should not be blank")
 	@NotNull(message = "pincode is mandatory")
-	@Pattern(regexp = "[1-9]{6}", message = "pincode should be in valid format")
+	@Pattern(regexp = "[0-9]{6}", message = "pincode should be in valid format")
 	private String pincode;
 
 }

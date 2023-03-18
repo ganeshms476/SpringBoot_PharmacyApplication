@@ -28,8 +28,8 @@ import lombok.Data;
 @Data
 public class Booking {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-	@GenericGenerator(name = "id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "booking_id")
+	@GenericGenerator(name = "booking_id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
 			@Parameter(name = StringPreFixedIdSequenceGenerator.INCREMENT_PARAM, value = "1"),
 			@Parameter(name = StringPreFixedIdSequenceGenerator.VALUE_PREFIXE_PARAMETER, value = "booking_"),
 			@Parameter(name = StringPreFixedIdSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
