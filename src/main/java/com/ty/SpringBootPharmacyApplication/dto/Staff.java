@@ -21,8 +21,8 @@ import lombok.Data;
 @Entity
 public class Staff {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-	@GenericGenerator(name = "id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "staff_id")
+	@GenericGenerator(name = "staff_id", strategy = "com.ty.SpringBootPharmacyApplication.util.StringPreFixedIdSequenceGenerator", parameters = {
 			@Parameter(name = StringPreFixedIdSequenceGenerator.INCREMENT_PARAM, value = "1"),
 			@Parameter(name = StringPreFixedIdSequenceGenerator.VALUE_PREFIXE_PARAMETER, value = "staff_"),
 			@Parameter(name = StringPreFixedIdSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
