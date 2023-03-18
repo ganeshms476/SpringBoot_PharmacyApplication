@@ -26,7 +26,7 @@ public class MedicineController {
 	private MedicineService service;
 	
 	@ApiOperation(value = "save medicine", notes = " Api is used to save the medicine")
-	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully saved")})
+
 	@PostMapping("/medicine")
 	public ResponseEntity<ResponseStructure<Medicine>> saveMedicine(@RequestBody Medicine medicine,
 			@RequestParam String medicalStore_id) {
